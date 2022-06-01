@@ -1,0 +1,45 @@
+// Tennis Game
+
+#include<stdio.h>
+int main()
+{
+        long long int k,s,n,i,max;
+        scanf("%lld%lld%lld",&k,&s,&n);
+        if(n<k*s)                           
+        {
+                printf("NO\n");
+        }
+        else
+        {
+                if(n%2==0)                     
+                {
+                        printf("YES\n");
+                }
+                else                         
+                {
+                        if(k==1 || k==2)
+                        {
+                                printf("NO\n");
+                        }
+                        else
+                        {
+                                if(s==1)                
+                                {
+                                        max = k+(k-3);        
+                                        if(n>max)             
+                                        {
+                                        printf("NO\n");
+                                        }
+                                        else
+                                        {
+                                                printf("YES\n");
+                                        }
+                                }
+                                else                      
+                                {
+                                        printf("YES\n");
+                                }
+                        }
+                }
+        }
+}
