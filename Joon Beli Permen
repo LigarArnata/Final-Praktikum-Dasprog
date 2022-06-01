@@ -1,0 +1,66 @@
+// Joon Beli Permen
+
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#define size 100
+
+int m, n, i, j, k, l, candy[size][size], Max = 0, Now = 0;
+
+void po(int permen[size][size], int i, int j, int m, int n, int warna)
+{
+    if (i < 0 || i >= m || j < 0 || j >= n)
+    {
+        return;
+    }
+
+    if (permen[i][j] != warna || permen[i][j] == -1)
+    {
+        return;
+    }
+
+    permen[i][j] = -1;
+    Now += 1;
+
+    po(permen, i + 1, j, m, n, warna);
+    po(permen, i - 1, j, m, n, warna);
+    po(permen, i, j + 1, m, n, warna);
+    po(permen, i, j - 1, m, n, warna);
+}
+
+int max(int a, int b)
+{
+    if (a > b)
+    {
+        return a;
+    }
+    return b;
+}
+
+int main()
+{
+    scanf("%d", &m);
+    scanf("%d", &n);
+
+    for (i = 0; i < m; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            scanf("%d", &candy[i][j]);
+        }
+    }
+
+    for (k = 0; k < m; k++)
+    {
+        for (l = 0; l < n; l++)
+        {
+            Now = 0;
+            po(candy, k, l, m, n, candy[k][l]);
+
+            Max = max(Max, Now);
+        }
+    }
+
+    printf("%d", Max);
+}
