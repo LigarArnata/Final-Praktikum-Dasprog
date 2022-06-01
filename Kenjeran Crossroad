@@ -1,0 +1,93 @@
+// Kenjeran Crossroad
+
+#include <stdio.h>
+#include <math.h>
+
+
+int main() {
+    
+    int M, N, T, totalCar, x, y, passedCar;
+    scanf("%d %d %d", &M, &N, &T);
+    
+    totalCar = M + N + 1;
+    
+    if (T > 85)
+    {
+        x = floor(T / 85); 
+        y = T % 85;        
+        x = x * 12;        
+        
+        if (y > 25)
+        {           
+            y = y - 25;           
+            y = floor(y / 5);    
+            passedCar = x + y;
+            if (passedCar > M)
+            {
+                printf("YES! ");
+            }
+            else
+            {
+                printf("NO! ");
+            }
+           
+            
+            if (totalCar - passedCar <= 0)
+            {
+                printf("0\n");
+            }
+            else
+            {
+                printf("%d\n", totalCar - passedCar);
+            }
+            
+        }
+        else if (y <= 25)
+        {     
+            if (x > M)
+            {
+                printf("YES! ");
+            }
+            else
+            {
+                printf("NO! ");
+            }
+            if (totalCar - x <= 0)
+            {
+                printf("0\n");
+            }            
+            else
+            {
+                printf("%d\n", totalCar - x);
+            }
+        }
+    }
+    
+    else if (T <= 85 && T > 25)
+    {
+        x = floor((T-25) / 5); 
+        if (x > M)
+        {
+            printf("YES! ");
+        }
+        else
+        {
+            printf("NO! ");
+        }
+        if (totalCar - x <= 0)
+        {
+            printf("0\n");
+        }
+        else
+        {
+            printf("%d\n", totalCar - x);
+        }
+    }
+    
+    else if (T <= 25)
+    {
+        printf("NO! %d", totalCar);
+    }
+    
+    return 0;
+}
