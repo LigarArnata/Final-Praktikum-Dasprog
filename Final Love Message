@@ -1,0 +1,53 @@
+// Final Love Message
+
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+char *removeWhite(char *arr);
+
+int main()
+{
+    char input[1001];
+
+    while (1)
+    {
+        scanf(" %[^\n]", input);
+        if (strcmp(input, "exit") == 0)
+        {
+            break;
+        }
+        removeWhite(input);
+        int n = strlen(input);
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = i + 1; j < n; j++)
+            {
+                if (input[i] > input[j])
+                {
+                    char temp = input[i];
+                    input[i] = input[j];
+                    input[j] = temp;
+                }
+            }
+        }
+        printf("%s\n", input);
+    }
+
+    return 0;
+}
+
+char *removeWhite(char *arr)
+{
+    int i = 0, j = 0;
+    while (arr[i])
+    {
+        if (arr[i] != ' ')
+            arr[j++] = arr[i];
+        i++;
+    }
+    arr[j] = '\0';
+    return arr;
+}
