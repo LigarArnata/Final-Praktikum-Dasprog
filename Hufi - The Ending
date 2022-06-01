@@ -1,0 +1,35 @@
+// Hufi - The Ending
+
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#define size 100
+
+int main()
+{
+    char kalimat[size][size];
+    char kata[size][size][size];
+    int n; scanf("%d" , &n);
+    for(int i = 0; i <= n; i++)
+    {
+        int j = 0;
+        scanf("%[^\n]s", kalimat[i]);
+        scanf("\n");
+        char* token = strtok(kalimat[i], " ");
+        while(token != NULL)
+        {
+            sprintf(kata[i][j++], "%s" , token);
+            token = strtok(NULL, " ");
+        }
+
+    }
+    int m = 0; scanf("%d", &m);
+    while(m--)
+    {
+        int temp1, temp2;
+        scanf("%d %d", &temp1, &temp2);
+        printf("%s ", kata[temp1][--temp2]);
+    }
+    return 0;
+}
