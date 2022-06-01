@@ -1,0 +1,85 @@
+// Lele Dumbo dan Prima
+
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main(){
+    int a, b;
+    int bagi, pn, check;
+    int tes=0;
+    scanf("%d %d",&a, &b);
+    for(int i=a; i<=b;i++){
+        check=1;
+        pn=1;
+        bagi=2;
+        while (bagi <= sqrt(i)){
+            if(i % bagi == 0){
+                check++;
+                if (check>1){
+                    pn=0;
+                    break;
+                }
+            }
+           bagi++;
+        }
+        if(pn==0){
+            continue;
+        }
+        for(int j=a;j<=b;j++){
+           check=1;
+            pn=1;
+            bagi=2;
+            while (bagi <= sqrt(j)){
+                if(j % bagi == 0){
+               check++;
+                    if (check>1){
+                        pn=0;
+                        break;
+                    }
+                }
+                bagi++;
+            }
+            if(pn==0){
+                continue;
+            }
+            long long int status=0;
+            if(j<10){
+                status=i*10+j;
+            }
+            else if(j<100){
+                status=i*100+j;
+            }
+            else if(j<1000){
+                status=i*1000+j;
+            }
+            else if(j<10000){
+                status=i*10000+j;
+            }
+           check=1;
+            pn=1;
+            bagi=2;
+            while (bagi <= sqrt(status)){
+                if (status % bagi == 0){
+                   check++;
+                    if (check>1){
+                        pn=0;
+                        break;
+                    }
+                }
+                bagi++;
+
+            }
+            if(pn){
+                printf("%d %d\n", i, j);
+                tes++;
+            }
+        }
+        }
+        if(tes == 0){
+                printf("TIDAK ADA");
+
+    }
+}
+
