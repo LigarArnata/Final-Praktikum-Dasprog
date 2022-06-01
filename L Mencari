@@ -1,0 +1,38 @@
+// L Mencari
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+int a, b, deret1[10001], deret2[10001], status;
+
+int main()
+{
+    scanf("%d", &a);
+    for (int i = 0; i < a; i++)
+    {
+        scanf("%d", &b);
+        for (int j = 0; j < b - 1; j++)
+        {
+            scanf("%d", &deret1[j]);
+        }
+        for (int k = 0; k < b; k++)
+        {
+            scanf("%d", &deret2[k]);
+        }
+        for (int m = 0; m < b; m++)
+        {
+            if (deret1[m] != deret2[m])
+            {
+                printf("%d\n", deret2[m]);
+                status = 1;
+                break;
+            }
+        }
+        if (status != 1)
+        {
+            printf("%d\n", deret2[b - 1]);
+        }
+    }
+}
