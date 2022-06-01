@@ -1,0 +1,84 @@
+// Ketua Pelaksana
+
+#include <stdio.h>
+#include <string.h>
+
+long long int n, i, j;
+
+struct peringkat
+{
+    char namaTim[101];
+    long long int A;
+    long long int B;
+    long long int C;
+    long long int Total;
+};
+
+int main()
+{
+    scanf("%lld", &n);
+    struct peringkat tim[n];
+    struct peringkat temp;
+    for (i = 0; i < n; i++)
+    {
+        scanf("%s", tim[i].namaTim);
+        scanf("%lld", &tim[i].A);
+        scanf("%lld", &tim[i].B);
+        scanf("%lld", &tim[i].C);
+        tim[i].Total = tim[i].A + tim[i].B + tim[i].C;
+    }
+
+    for (i = 0; i < n - 1; i++)
+    {
+        for (j = 0; j < n - i - 1; j++)
+        {
+            if (tim[j].Total < tim[j + 1].Total)
+            {
+                temp = tim[j];
+                tim[j] = tim[j + 1];
+                tim[j + 1] = temp;
+            }
+            else if (tim[j].Total == tim[j + 1].Total)
+            {
+                if (tim[j].A < tim[j + 1].A)
+                {
+                    temp = tim[j];
+                    tim[j] = tim[j + 1];
+                    tim[j + 1] = temp;
+                }
+                else if (tim[j].A == tim[j + 1].A)
+                {
+                    if (tim[j].B < tim[j + 1].B)
+                    {
+                        temp = tim[j];
+                        tim[j] = tim[j + 1];
+                        tim[j + 1] = temp;
+                    }
+                    else if (tim[j].B == tim[j + 1].B)
+                    {
+                        if (tim[j].C < tim[j + 1].C)
+                        {
+                            temp = tim[j];
+                            tim[j] = tim[j + 1];
+                            tim[j + 1] = temp;
+                        }
+                        else if (tim[j].C == tim[j + 1].C)
+                        {
+                            if (strcmp(tim[j].namaTim, tim[j + 1].namaTim) > 0)
+                            {
+                                temp = tim[j];
+                                tim[j] = tim[j + 1];
+                                tim[j + 1] = temp;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("%s %lld %lld %lld %lld\n", tim[i].namaTim, tim[i].A, tim[i].B, tim[i].C, tim[i].Total);
+    }
+}
