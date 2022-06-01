@@ -1,0 +1,44 @@
+//FizzBuzzMore
+
+#include <stdio.h>
+
+int T, N, i, j, k;
+
+struct FizzBuzz
+{
+    int X;
+    char Y[1001];
+};
+
+int main()
+{
+    struct FizzBuzz kata[1001];
+    scanf("%d", &T);
+
+    for (i = 0; i < T; i++)
+    {
+        scanf("%d", &kata[i].X);
+        scanf("%s", kata[i].Y);
+    }
+    scanf("%d", &N);
+
+    for (j = 1; j <= N; j++)
+    {
+        int status = 0;
+
+        for (k = 0; k < T; k++)
+        {
+            if (j % kata[k].X == 0)
+            {
+                printf("%s", kata[k].Y);
+                status = 1;
+            }
+        }
+        if (status != 1)
+        {
+            printf("%d", j);
+        }
+        printf("\n");
+    }
+}
+
